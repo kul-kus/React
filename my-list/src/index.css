@@ -1,0 +1,12 @@
+body {
+    font: 14px "Century Gothic", Futura, sans-serif;
+    margin: 20px;
+  }
+  
+ 
+  .mybutton{
+    background-color: brown;
+    border:1px solid black;
+    width:200px;
+    height: 100px;
+  }

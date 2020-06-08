@@ -1,0 +1,109 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="signup.aspx.cs" Inherits="signup" %>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="login_signup.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+
+            $("#Btn").click(function () {
+                $(".load_page").slideUp(500);
+              //  $(".load_page").empty();
+            });
+
+
+            $(".emali_link").click(function () {
+                $(".load_page").slideUp(500);
+                setTimeout(function () {
+                    $(".load_page").load("email_signup.aspx");
+                    $(".load_page").slideDown(500);
+                }, 250);
+               
+            });
+
+
+            $(".login_link").click(function () {
+                $(".load_page").slideUp(500);
+                setTimeout(function () {
+                    $(".load_page").load("loginaspx.aspx");
+                    $(".load_page").slideDown(500);
+                }, 250);
+            });
+
+        });
+
+    </script>
+    <style>
+         .signup_back {
+                 background-color: rgba(51, 51, 51, 0.84);
+                 background-image: url(../image/back.png);
+        }
+
+        #back {
+                background-image: url(../image/back.png)!important;
+                 background-color: rgba(51, 51, 51, 0.84)!important;
+                height: inherit;
+            visibility: visible;
+            display: block;
+            overflow: hidden;
+      
+        }
+    </style>
+
+</head>
+<body class="signup_back">
+
+    <div id="back">
+        <div id="back_panel">
+            <div class="close_">
+                <a id="Btn" href="#">X</a>
+            </div>
+            <form id="dddd" runat="server">
+                <div class="login">
+
+                    <div class="heading">
+                        <h2>Hey there!</h2>
+                        <p class="lead">Okami is your best source for fun. Share anything you find interesting, get real responses from people all over the world, and discover what makes you laugh.</p>
+                    </div>
+
+                    <div class="social_btn">
+                        <input class="btn btn-primary" type="button" value="Facebook" runat="server" onserverclick="FaceBookLogin" />
+                        <input class="btn btn-danger" type="button" value="Google" runat="server" onserverclick="GoogleLogin" />
+
+                    </div>
+
+                    <hr style="background-color: rgba(204, 200, 200, 0.56);" />
+
+
+                    <p class="alternative">
+                        Sign up with your 
+                        <a class="emali_link" href="#">Email Address</a>
+
+                    </p>
+
+
+                    <p class="alternative">
+                        Have an account?
+                        <a class="login_link" href="#">Login
+
+
+                        </a>
+                    </p>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

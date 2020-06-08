@@ -1,0 +1,208 @@
+﻿
+body {
+}
+
+
+
+#back_signup, #back_email_signup, #back_login, #back_user_upload, #back_forgot_password {
+    z-index: 7;
+    background-image: url(image/back.png)!important;
+    background-color: rgba(51, 51, 51, 0.84);
+    position: fixed;
+    height: inherit;
+    width: 100%;
+    visibility: visible;
+    display: none;
+    top: 0px;
+    left: 0px;
+    overflow: scroll;
+}
+
+#back_panel {
+    width: 500px;
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    margin-left: -270px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 5px rgba(0,0,0,.3);
+    border-radius: 2px;
+    padding: 30px;
+}
+
+.login {
+    background-color: rgb(255, 255, 255);
+}
+
+.close_ {
+    padding-top: 5px;
+    width: -webkit-fill-available;
+}
+
+    .close_ #Btn {
+        float: right;
+        color: #6d6d6d;
+        border: none;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: cursive;
+        font: bold;
+        background-color: rgba(243, 241, 240, 0);
+    }
+
+        .close_ #Btn:hover, .close_ #Btn:focus {
+            text-decoration: none;
+            color: BLACK;
+            cursor:pointer;
+            outline:none;
+        }
+
+        .close_ #Btn:focus {
+            text-decoration: none;
+            outline: none;
+            border:none;
+        }
+h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.heading h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.heading .lead {
+    color: #999;
+    font-size: inherit;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.content {
+    display: block;
+    position: relative;
+}
+
+    .content .lead {
+        color: #999;
+        font-size: inherit;
+        margin-top: 15px;
+        margin-bottom: 25px;
+        float: left;
+        display: inline;
+    }
+
+    .content .lead1 {
+        color: #999;
+        font-size: inherit;
+        margin-top: 15px;
+        margin-bottom: 25px;
+        float: left;
+        display: inline;
+        margin-left: 10px;
+    }
+
+
+.heading .lead:hover, .heading h2 {
+    cursor: default;
+}
+
+.social_btn {
+    display:inline-flex;
+}
+
+.social_btn .btn-primary {
+    background-image: url(image/social.png);
+    background-position-x: -5px;
+    background-position-y: 0px;
+    background-repeat: no-repeat;
+    background-size: 60px;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #3b5998;
+    color: #fff;
+    width: 210px;
+    height: 55px;
+    line-height: 28px;
+    text-align: center;
+    padding: 15px 15px 15px 60px;
+    border-radius: 2px;
+    float: left;
+    border-radius: 5px;
+}
+
+    .social_btn .btn-primary:hover {
+        background-color: #27488a;
+    }
+
+.social_btn .btn-danger {
+    background-image: url(image/social.png);
+    background-position-x: -5px;
+    background-position-y: -60px;
+    background-repeat: no-repeat;
+    background-size: 60px;
+    float: right;
+    margin-left:20px;
+    width: 210px;
+    height: 55px;
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #dc4d28;
+    color: #fff;
+    line-height: 28px;
+    text-align: center;
+    padding: 15px 15px 15px 60px;
+    border-radius: 2px;
+    border-radius: 5px;
+}
+
+    .social_btn .btn-danger:hover {
+        background-color: #ca4523;
+    }
+
+.alternative {
+    color: #a9abab;
+}
+
+    .alternative a {
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+.active input[type="submit"] {
+    font-size: 17px;
+    height: 40px;
+    width: 95px;
+    margin-top: 20px;
+    width: 70px;
+    display: inline;
+    float: left;
+}
+
+.alternative a:hover, .alternative a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.forgot_pass a {
+    text-decoration: none;
+    display: inline;
+    float: right;
+    margin-top: 30px;
+    color: rgb(156, 152, 152);
+    cursor: pointer;
+}
+
+    .forgot_pass a:hover{
+        cursor: pointer;
+        text-decoration: none;
+        color: rgb(224, 83, 83);
+       
+    }
+

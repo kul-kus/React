@@ -1,0 +1,271 @@
+﻿
+.blogShort {
+    border-bottom: 1px solid #ddd;
+}
+
+.add {
+    background: #333;
+    padding: 10%;
+    height: 300px;
+}
+
+
+
+
+.nav-sidebar {
+    width: 100%;
+    padding: 30px 0;
+    border-right: 1px solid #ddd;
+}
+
+    .nav-sidebar a {
+        color: #333;
+        -webkit-transition: all 0.08s linear;
+        -moz-transition: all 0.08s linear;
+        -o-transition: all 0.08s linear;
+        transition: all 0.08s linear;
+    }
+
+    .nav-sidebar .active a {
+        cursor: default;
+        background-color: #0b56a8;
+        color: #fff;
+    }
+
+        .nav-sidebar .active a:hover {
+            background-color: #0b56a8;
+        }
+
+        .nav-sidebar .active a:focus {
+            cursor: default;
+            background-color: #0b56a8;
+            color: #fff;
+        }
+
+    .nav-sidebar .text-overflow a,
+    .nav-sidebar .text-overflow .media-body {
+        white-space: nowrap;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+.btn-blog {
+    color: #ffffff;
+    background-color: #E50000;
+    border-color: #E50000;
+    border-radius: 0;
+    margin-bottom: 10px
+}
+
+    .btn-blog:hover,
+    .btn-blog:focus,
+    .btn-blog:active,
+    .btn-blog.active,
+    .open .dropdown-toggle.btn-blog {
+        color: white;
+        background-color: #0b56a8;
+        border-color: #0b56a8;
+    }
+
+article h2 {
+    color: #333333;
+}
+
+h2 {
+    color: #0b56a8;
+}
+
+.margin10 {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.container .text-style {
+    text-align: justify;
+    line-height: 23px;
+    margin: 0 13px 0 0;
+    font-size: 19px;
+}
+
+.tab-content {
+    margin-left: 45%;
+    width: 75%;
+    padding-left: 30px;
+}
+
+.col-sm-2 {
+    width: 25%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.user_setting_centered {
+    width: 80%;
+    margin: auto;
+}
+
+.form_tab1, .form_tab2, .form_tab3 {
+    width: 60%;
+}
+
+
+
+    .form_tab2 label, .form_tab3 label, .form_tab1 label {
+        font-weight: 100;
+        font-family: serif;
+    }
+
+    .form_tab2 input[type='password'], .form_tab2 input[type='text'], .form_tab1 input[type='text'] {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    .form_tab1 input[type='submit'], .form_tab2 input[type='submit'], .form_tab3 input[type='submit'] {
+        float: right;
+        width: auto;
+        margin-right: 20px;
+    }
+
+        .form_tab2 input[type='password']:focus, .form_tab2 input[type='text']:focus,
+        .form_tab2 input[type='submit']:focus {
+            outline: none;
+        }
+
+        .form_tab1 input[type='password']:focus, .form_tab1 input[type='text']:focus,
+        .form_tab1 input[type='submit']:focus {
+            outline: none;
+        }
+
+    .form_tab1 .heading h2, .form_tab2 .heading h2, .form_tab3 .heading h2 {
+        color: #0e0e0e;
+        font-family: fantasy;
+        font-size: 40px;
+        word-spacing: 20px;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e2e2e2;
+    }
+
+
+    .form_tab1 .delete_acc {
+        display: inline-block;
+        margin-top: 40px;
+        font-size: 15px;
+        font-family: sans-serif;
+        color: #7d7e80;
+        cursor: pointer;
+    }
+
+    .form_tab1 .delete_acc:hover {
+        color: #f11e1e;
+    }
+
+.form_tab3 .main_user_avtar {
+    margin-bottom: 15px;
+    width: 100%;
+    display: inline-block;
+}
+
+        .form_tab3 .main_user_avtar .user_img, .form_tab3 .choose_img {
+            display: inline-block;
+            width: 100px;
+            float: left;
+            height: auto;
+        }
+
+    .form_tab3 .choose_img {
+        width: 70%;
+        padding-left: 20px;
+    }
+
+
+        .form_tab3 .choose_img input[type='file'] {
+            font-size: 15px;
+        }
+
+            .form_tab3 .choose_img input[type='file']:focus, .form_tab3 select:focus {
+                outline: none;
+            }
+
+    .form_tab3 .main_user_avtar .user_avtar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .form_tab1 p, .form_tab3 p {
+        font-size: 12px;
+        color: #737373;
+        font-weight: 400;
+        padding-top: 7px;
+    }
+
+    .form_tab3 select {
+        font-size: 14px;
+        color: #4e4e4e;
+        font-family: -webkit-body;
+        box-sizing: border-box;
+        height: 40px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-weight: 700;
+    }
+
+    .form_tab3 .active {
+        display: inline-block;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+    .form-group textarea {
+        resize: none;
+        border-radius: 5px;
+    }
+
+    .form-group .year, .form-group .month, .form-group .day {
+        width: 30%;
+        float: left;
+        margin-bottom: 20px;
+        text-align: center;
+        margin-right: 12px;
+    }
+
+.tab-pane {
+    margin-bottom: 30px;
+}
+
+.form_tab3 .glyphicon {
+    display: none;
+}
+
+@media screen and (min-width:767px) {
+}
+
+@media screen and (max-width: 767px) {
+    .col-sm-2 {
+        width: 100%;
+        padding: 0px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .nav-sidebar {
+        border: none;
+        padding: 10px 0px 5px 0px;
+    }
+
+    .tab-content {
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    .user_setting_centered {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1100px) {
+}

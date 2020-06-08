@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <link href="login_signup.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+
+                $("#Btn").click(function () {
+                    $(".load_page").slideUp(500);
+                    //$(".load_page").empty();
+                });
+
+                $(".forgot_pass_link").click(function () {
+                    $(".load_page").slideUp(500);
+                    setTimeout(function () {
+                        $(".load_page").load("forgot_passowrd.aspx");
+                        $(".load_page").slideDown(500);
+                    }, 250);
+                });
+               
+
+            });
+    </script>
+
+    <style>
+         .signup_back {
+               background-color: rgba(51, 51, 51, 0.84);
+                background-image: url(image/back.png);
+        }
+
+     #back{
+    background-image: url(image/back.png)!important;
+    background-color: rgba(51, 51, 51, 0.84)!important;
+    visibility: visible;
+    display: block;
+    height:inherit;
+    overflow:hidden;
+}
+
+</style>
+
+</head>
+<body class="signup_back">
+    <div id="back">
+        <div id="back_panel">
+             <div class ="close_">
+                 <a id="Btn" href="#">X</a>
+             
+             </div>
+
+              <div class="login">
+
+                     <div class="heading">
+                     <h2>Login</h2>
+                      <p class="lead">Connect with a social network</p>   
+                      </div>
+
+
+                  <div class="social_btn" style="display:flow-root">
+                      <input type="button"  class="btn btn-primary" value="Facebook"/>
+                      <input type="button" class="btn btn-danger" value="Google" />
+                  </div>
+
+                  <hr style="background-color:rgba(204, 200, 200, 0.56);" />
+
+                      <div class="heading">
+                    <p class="lead">Login in with your email address</p> 
+                      </div>  
+
+                  <form runat="server">
+                        <div class="form-group">
+                        
+                          <label for="usr">Email</label>
+                          <input type="email" class="form-control" required />
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="usr">Password</label>
+                         <input type="password" class="form-control" required/>
+                        </div>
+                      <div class="active">
+                         <input type="submit" class="btn btn-info"  Text="Log In" style="width:100px" />
+                      </div>
+                    </form>
+
+                  <div class="forgot_pass">
+                  <a class="forgot_pass_link">Forgot Password</a>
+                  </div>  
+                
+               </div> 
+        </div>
+     </div>
+</body>
+</html>

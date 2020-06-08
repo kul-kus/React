@@ -1,0 +1,31 @@
+[Info  - 19:57:06] Using tsserver from: /usr/share/code/resources/app/extensions/node_modules/typescript/lib
+[Info  - 19:57:06] Forking TSServer
+PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+[Info  - 19:57:06] Started TSServer
+[Error  - 20:39:52] 'quickinfo' request failed with error.
+Error processing request. Debug Failure. False expression: `JsxText` tokens should not be the first child of `JsxElement | JsxSelfClosingElement`
+Error: Debug Failure. False expression: `JsxText` tokens should not be the first child of `JsxElement | JsxSelfClosingElement`
+    at findRightmostChildNodeWithTokens (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:66382:26)
+    at find (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:66361:33)
+    at findPrecedingToken (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:66335:22)
+    at getTokenAtPositionWorker (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:66298:41)
+    at getTouchingToken (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:66270:16)
+    at Object.getTouchingPropertyName (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:66266:16)
+    at Object.getQuickInfoAtPosition (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:84603:27)
+    at IOSession.Session.getQuickInfoWorker (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:91480:62)
+    at Session.handlers.ts.createMapFromTemplate._a.(anonymous function) (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:90597:61)
+    at /usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:92067:88
+    at IOSession.Session.executeWithRequestId (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:92058:28)
+    at IOSession.Session.executeCommand (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:92067:33)
+    at IOSession.Session.onMessage (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:92087:35)
+    at Interface.<anonymous> (/usr/share/code/resources/app/extensions/node_modules/typescript/lib/tsserver.js:93288:27)
+    at emitOne (events.js:96:13)
+    at Interface.emit (events.js:191:7)
+    at Interface._onLine (readline.js:241:10)
+    at Interface._normalWrite (readline.js:384:12)
+    at Socket.ondata (readline.js:101:10)
+    at emitOne (events.js:96:13)
+    at Socket.emit (events.js:191:7)
+    at readableAddChunk (_stream_readable.js:178:18)
+    at Socket.Readable.push (_stream_readable.js:136:10)
+    at Pipe.onread (net.js:560:20)
