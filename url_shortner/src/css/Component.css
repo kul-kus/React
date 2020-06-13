@@ -1,0 +1,11 @@
+.toast-body{
+    padding: 5px
+}
+
+.toast-text{
+    font-weight: 500;
+    color: #0d96f5;
+    background: #f0f8ff00;
+    border: 0px solid #00000008;
+    box-shadow: 0px 0px 0px 0px #ffffff0d;
+}

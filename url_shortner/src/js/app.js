@@ -12,7 +12,7 @@ function App() {
          <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/shorturl' component={ShortUrl} />
-            <Route path="*" component={Home} />
+            {/* <Route path="*" component={Home} /> */}
          </Switch>
       </Router>
    );

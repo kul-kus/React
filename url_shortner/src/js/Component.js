@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
-import Modal from 'react-bootstrap/Modal';
 import Toast from 'react-bootstrap/Toast';
 
 
@@ -12,6 +10,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './../css/Home.css';
+import './../css/Component.css';
+
 
 
 function NavigationBar(props) {
@@ -47,7 +47,7 @@ function Heading(props) {
         "fontWeight": "bold",
     }
     if (props.type === "short") {
-        h1["marginBottom"] = "30px"
+        h1["marginBottom"] = "0px"
     }
     return (
         <h1 style={h1} >{props.heading}</h1>
@@ -96,33 +96,9 @@ function PanelMsg(props) {
     )
 }
 
-function copyTextFunction() {
-    var copyText = document.getElementById("myInput");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-}
-
-function AlertComp(props) {
-
-    const [show, setShow] = useState(props.alertval);
-    var copyText = document.getElementById("myInput");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-    alert("dddd")
-    return (
-        <>
-            {/* <Alert key={"a1"} variant={"success"} >Copied.</Alert > */}
-            <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-                <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-            </Toast>
-        </>
-    )
-}
-
 
 function TextBox(props) {
+
     let colCss = {
         "padding": "0px"
     }
@@ -141,23 +117,49 @@ function TextBox(props) {
         "width": "100%",
         "height": "55px",
         "borderRadius": "0px",
-        "fontSize": "20px"
+        "fontSize": "18px",
+        "fontWeight": "400"
     }
     let rightArrow = {
         "fontWeight": "bolder",
         "fontSize": "33px",
         "height": "100%"
     }
-
     let home = (props.type && props.type === "home") ? true : false
+
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        if (show) {
+            var copyText = document.getElementById("myInput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+        }
+    }, [show]);
 
     return (
         <>
+            {
+                !home
+                    ? <Row style={{ "height": "30px" }}>
+                        <Col lg={{ span: 2, offset: 9 }} style={colCss}>
+                            {/* <AlertComp></AlertComp> */}
+                            <Toast className="toast-text" onClose={() => setShow(false)} show={show} delay={1500} autohide>
+                                <Toast.Body>Copied</Toast.Body>
+                            </Toast>
+                        </Col>
+                    </Row>
+                    : <></>
+            }
+
             <Row>
                 {/* <Col lg={{ span: 6, offset: 2 }} style={colCss}> */}
+
                 <Col lg={{ span: 8, offset: 1 }} style={colCss}>
                     <InputGroup className="mb-3" style={inputTxtCss}>
-                        {props.type && props.type === "home" &&
+                        {
+                            props.type && props.type === "home" &&
                             < InputGroup.Prepend style={{ "height": "100%" }}>
                                 <InputGroup.Text id="basic-addon1" style={rightArrow}>&#10132;</InputGroup.Text>
                             </InputGroup.Prepend>
@@ -165,6 +167,8 @@ function TextBox(props) {
                         <FormControl id="myInput" style={inputTxtCss}
                             placeholder={props.placeholder}
                             // aria-label="Username"
+                            value={props.value}
+                            onChange={props.onchangefun}
                             aria-describedby="basic-addon1"
                         />
 
@@ -173,20 +177,26 @@ function TextBox(props) {
                 <Col lg={{ span: 2 }} style={colCss}>
                     {home
                         ? <Button style={btnCss} variant="primary" type="submit"> {props.btnTxt}</Button>
-                        : <Button style={btnCss} variant="primary" alertval={true} onClick={AlertComp}> {props.btnTxt}</Button>
+                        : <Button style={btnCss} variant="primary" onClick={() => setShow(true)}> {props.btnTxt}</Button>
                     }
                 </Col>
             </Row>
         </>
     )
 }
-
+function ConvertStringtoHtml(con) {
+    return (
+        <span dangerouslySetInnerHTML={{ __html: con }}>
+        </span>
+    )
+}
 export {
     Footer,
     NavigationBar,
     InputPanel,
     PanelMsg,
     TextBox,
-    Heading
+    Heading,
+    ConvertStringtoHtml
 }
 // export NavigationBar
