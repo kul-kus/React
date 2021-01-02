@@ -20,7 +20,7 @@ MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, fu
     console.log("Connected successfully to server");
 
     const db = client.db(dbName);
-    findDocuments(db, function () {
+    deleteDocument(db, function () {
       client.close();
     });
 
@@ -33,16 +33,63 @@ MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, fu
 
 
 
-const findDocuments = function(db, callback) {
+const deleteDocument = function (db, callback) {
+  // Get the documents collection
+  const collection = db.collection('documents');
+  // Update document where a is 2, set b equal to 1
+  collection.deleteOne({ uid: "esy-wqwq" }, function (err, result) {
+    // assert.equal(err, null);
+    // assert.equal(1, result.result.n);
+    console.log("deleted -> result.result.n", result.result.n)
+    console.log("deleted the document with the field a equal to 2");
+    callback(result);
+  });
+}
+
+
+const updateDocument = function (db, callback) {
+  // Get the documents collection
+  const collection = db.collection('documents');
+  // Update document where a is 2, set b equal to 1
+  collection.updateOne({ uid: "esy-1608733124318" }
+    , { $set: { isDeleted: 'false', siteVisitedCount: 0 } }, function (err, result) {
+      assert.equal(err, null);
+      assert.equal(1, result.result.n);
+      console.log("updateDocument -> result.result.n", result.result.n)
+      console.log("Updated the document with the field a equal to 2");
+      callback(result);
+    });
+}
+
+
+const findDocuments = function (db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
   // Find some documents
-  collection.find({}).toArray(function(err, docs) {
-    assert.equal(err, null);
-    console.log("Found the following records");
-    console.log(docs);
-    callback(docs);
-  });
+  // collection.
+  db.collection('documents').createIndex(
+    { "url.shortUrl": 1 },
+    null,
+    function (err, results) {
+      console.log("findDocuments -> err", err)
+      console.log("findDocuments -> results", results)
+      collection.find({ $text: { $search: "wc" } }).toArray(function (err, docs) {
+        assert.equal(err, null);
+        console.log("Found the following records");
+        console.log(docs);
+        callback(docs);
+      });
+      // console.log(results);
+      // callback();
+    }
+  );
+  // collection.cre
+  // collection.find({ $text: { $search: "coffee" } }).toArray(function(err, docs) {
+  //   assert.equal(err, null);
+  //   console.log("Found the following records");
+  //   console.log(docs);
+  //   callback(docs);
+  // });
 }
 
 

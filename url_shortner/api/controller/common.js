@@ -11,6 +11,9 @@ module.exports = {
             capitalization: "lowercase"
         })
     },
+    flatenArray: function (arrays) {
+        return [].concat.apply([], arrays);
+    },
     getExpiryDate: function (obj, exdateType = "ISOString") {
         let createdMiliSeconds = self.getCurrentTimeInMili()
         if (t(obj, "createdDate").safeObject) {
@@ -49,7 +52,24 @@ module.exports = {
             return false
         }
         return true
+    },
+    convertJson: function (str) {
+        try {
+            str = (str && typeof str === "string") ? JSON.parse(str) : str;
+        } catch (e) {
+            return str;
+        }
+        return str;
+    },
+    checkJson: function (str) {
+        try {
+            (str && typeof str === "string") ? JSON.parse(str) : str;
+        } catch (e) {
+            return false;
+        }
+        return true;
     }
+
 }
 var self = module.exports
 

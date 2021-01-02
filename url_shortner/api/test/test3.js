@@ -1,10 +1,19 @@
-const { t } = require('typy');
 
 
-let x = {
-    // "expiryInDays": 7,
-    "expiryInDays1": null
-}
 
-console.log(t(x, "expiryInDays").isNumber)
-console.log(t(x, "expiryInDays1").isNumber)
+let mongoComm = require("../mongdb/common")
+let mongoOperations = require("../mongdb/operations")
+
+
+
+
+setInterval(async () => {
+    let updatePromiseArr = []
+    let [db, client] = await mongoComm.createMongoConnection()
+    let document = await mongoOperations.getDocument({ 'expiryTime': `lt ${Date.now()}`, "isDeleted": "false" }, db, client)
+    updatePromiseArr = document.map(curr => {
+        return mongoOperations.updateDocument({ "uid": curr["uid"] }, { "isDeleted": "true" }, db, client)
+    })
+    let updatedData = await Promise.all(updatePromiseArr)
+    // console.log("document", document)
+}, 200)

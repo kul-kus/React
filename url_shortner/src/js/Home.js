@@ -113,7 +113,7 @@ function MyForm(props) {
   [formData["days"], setDays] = useState("");
   [formData["error"], setError] = useState("");
   [formData["submt"], setSubmt] = useState(false);
-  const [shorturl, setShortUrl] = useState(false);
+  const [shorturlBol, setShortUrl] = useState(false);
 
 
 
@@ -152,18 +152,18 @@ function MyForm(props) {
         e.preventDefault()
       } else {
         setSubmt(true)
-        api.createShortUrl(formData, (err, data) => {
+        api.createShortUrl(formData, (err, shortUrlData) => {
           if (err) {
             setError(err)
             setUrl(formData["url"])
             setCustom(formData["custom"])
             setDays(formData["days"])
             e.preventDefault()
-          }
-          if (data) {
-            // <Redirect to="/shorturl/" />
-            setError("---------------")
-            setShortUrl(data)
+          } else if (shortUrlData) {
+            setShortUrl(shortUrlData)
+            props.setSiteData(shortUrlData, formData["url"])
+          } else {
+            setError("Someting went Wrong with the server.")
           }
         })
       }
@@ -174,7 +174,7 @@ function MyForm(props) {
     if (formData["submt"]) {
       setSubmt(false)
     }
-  }, [formData["submt"], shorturl]);
+  });
 
   let error = {
     "marginTop": "15px",
@@ -190,7 +190,11 @@ function MyForm(props) {
       <div className="error" style={error}>{formData.error}</div>
       <Form style={{ "padding": "3px 5px 20px 5px" }} onSubmit={onFormSubmit}>
 
-        <TextBox type="home" placeholder="Enter your link here" btnTxt="Shorten" onchangefun={e => { setUrl(e.target.value) }} value={formData.url}></TextBox>
+        <TextBox type="home"
+          placeholder="Enter your link here"
+          btnTxt="Shorten"
+          onchangefun={e => { setUrl(e.target.value) }}
+          value={formData.url}></TextBox>
         <MyFormOptionalParams span="3"
           tag="shorturl/"
           label="Optional short link ending. Custom ending goes here:"
@@ -208,11 +212,10 @@ function MyForm(props) {
   return (
     <>
       {
-        shorturl ? <><Redirect to="/shorturl"
-          to={{
-            pathname: "/shorturl",
-            data: { "Longurl": formData.url } // your data array of objects
-          }}
+        shorturlBol ? <><Redirect to="/shorturl"
+        // to={{
+        //   pathname: "/shorturl",
+        // }}
         /></> : renderData
       }
     </>
@@ -301,7 +304,11 @@ function MyContainer(props) {
       <Container style={{ "paddingBottom": "80px" }}>
         <Row>
           <Col md={{ span: 10, offset: 1 }}>
-            <InputPanel type="home" heading="Paste the URL to be shortned" form={MyForm} panelmsg={ConvertStringtoHtml(panelmessage)}></InputPanel>
+            <InputPanel type="home" heading="Paste the URL to be shortned"
+              form={MyForm}
+              setSiteData={props.setSiteData}
+              panelmsg={ConvertStringtoHtml(panelmessage)}
+            ></InputPanel>
           </Col>
         </Row>
         <Row>
@@ -333,13 +340,15 @@ function MyContainer(props) {
   return contain
 }
 
-function Home() {
+const Home = ({ routeData, setSiteData }) => {
+  // function Home(props) {
+  // setSiteData("s1", "l1")
   return (
     <>
       <NavigationBar></NavigationBar>
-      <MyContainer></MyContainer>
+      <MyContainer setSiteData={setSiteData}></MyContainer>
       <Footer></Footer>
     </>
-  );
+  )
 }
 export default Home;

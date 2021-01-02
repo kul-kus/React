@@ -1,7 +1,7 @@
 
 
-let mongoComm = require("./mongdb/common")
-let route = require("./Routes/route")
+let mongoComm = require("../mongdb/common")
+let route = require("../Routes/route")
 var app = require("express")()
 var bodyParser = require('body-parser');
 const port = 8080

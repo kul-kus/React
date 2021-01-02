@@ -18,7 +18,7 @@ function NavigationBar(props) {
     let navbar = (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand>
-                <Link to="/"><span className="logo">URL</span> Shortener!</Link>
+                <Link to="/"><span className="logo">ESY</span> Url Shortener!</Link>
             </Navbar.Brand>
         </Navbar>
     )
@@ -60,7 +60,13 @@ function InputPanel(props) {
     return (
         <div className="inputdiv" >
             {props.heading && <Heading type={props.type} heading={props.heading}></Heading>}
-            {(props.form) ? (< props.form ></props.form>) : <TextBox type={props.type} btnTxt="Copy"></TextBox>}
+            {(props.form)
+                ? (< props.form setSiteData={props.setSiteData}></props.form>)
+                : <TextBox
+                    value={props.shrtURL}
+                    type={props.type}
+                    onchangefun={props.onchangefun}
+                    btnTxt="Copy"></TextBox>}
             <PanelMsg content={props.panelmsg}></PanelMsg>
 
             {
@@ -70,7 +76,7 @@ function InputPanel(props) {
             }
             {
                 !home
-                    ? <>Create other< Link className="contnet_a" to="/"> Shortened URL</Link></>
+                    ? <>Create other<Link className="contnet_a" to="/"> Shortened URL</Link></>
                     : <></>
             }
 
