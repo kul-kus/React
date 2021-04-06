@@ -12,7 +12,10 @@ import { faThumbsUp, faHandPaper, faClock } from '@fortawesome/free-regular-svg-
 
 import { NavigationBar, Footer, InputPanel, TextBox, ConvertStringtoHtml } from "./Component"
 
-var api = require("./../api/routes")
+var backend = require("./../api/code/createShortUrl")
+const formData = {}
+// const setError,setDays,setCustom,setUrl
+var setUrl, setCustom, setDays, setSubmt, setError
 function MyCards(props) {
 
   let mycards = {
@@ -105,16 +108,15 @@ function MyFormOptionalParams(props) {
 
 function MyForm(props) {
 
-  var formData = {}
-  var setUrl, setCustom, setDays, setSubmt, setError
-
   [formData["url"], setUrl] = useState("");
   [formData["custom"], setCustom] = useState("");
   [formData["days"], setDays] = useState("");
   [formData["error"], setError] = useState("");
   [formData["submt"], setSubmt] = useState(false);
-  const [shorturlBol, setShortUrl] = useState(false);
+  const [shorturlBol, setShortUrlBol] = useState(false);
 
+  // setUrl()
+  // setError("kuldee")
 
 
   const validationCheck = (obj, cb) => {
@@ -145,25 +147,42 @@ function MyForm(props) {
   }
 
   const onFormSubmit = (e => {
-
+    e.preventDefault()
     validationCheck(formData, (err, data) => {
       if (err) {
+        console.log("MyForm -> err", err)
         setError(err)
-        e.preventDefault()
+
       } else {
-        setSubmt(true)
-        api.createShortUrl(formData, (err, shortUrlData) => {
+        // setSubmt(true)
+        backend.createShortUrl(formData, (err, data) => {
+          console.log("MyForm -> formData------2----", formData["url"])
+          console.log("MyForm -> shortUrlData----3---", data)
           if (err) {
+            console.log("MyForm ==-> err", err)
+            if (typeof err === "object" && err["error"]) {
+              err = err["error"]
+            } else {
+              err = JSON.stringify(err)
+            }
             setError(err)
             setUrl(formData["url"])
             setCustom(formData["custom"])
             setDays(formData["days"])
-            e.preventDefault()
-          } else if (shortUrlData) {
-            setShortUrl(shortUrlData)
-            props.setSiteData(shortUrlData, formData["url"])
+          } else if (data) {
+            setShortUrlBol(true)
+            console.log("MyForm -> shortUrlData------4---", data.shorturl)
+            console.log("MyForm -> longurl------5----", data.longurl)
+            console.log("MyForm -> longurl------6----", typeof formData)
+
+            props.setSiteData(data.shorturl, data.longurl)
+            console.log("MyForm ==========-> props.shorturl", props.shortURl)
+            console.log("MyForm ===========-> props.longurl", props.longURL)
+
+
+            // { <Redirect to="/shorturl" /> }
           } else {
-            setError("Someting went Wrong with the server.")
+            setError("Someting went wrong with the server.")
           }
         })
       }
@@ -183,6 +202,8 @@ function MyForm(props) {
     "color": "rgba(220, 25, 25, 0.87)",
     "height": "25px"
   }
+
+  console.log("MyForm -> shorturlBol---7--------", shorturlBol)
 
   let renderData = (
     <>
@@ -212,7 +233,7 @@ function MyForm(props) {
   return (
     <>
       {
-        shorturlBol ? <><Redirect to="/shorturl"
+        (shorturlBol && props.shortURl && props.longURL) ? <><Redirect to="/shorturl"
         // to={{
         //   pathname: "/shorturl",
         // }}
@@ -306,6 +327,8 @@ function MyContainer(props) {
           <Col md={{ span: 10, offset: 1 }}>
             <InputPanel type="home" heading="Paste the URL to be shortned"
               form={MyForm}
+              longURL={props.longURL}
+              shortURl={props.shortURl}
               setSiteData={props.setSiteData}
               panelmsg={ConvertStringtoHtml(panelmessage)}
             ></InputPanel>
@@ -340,13 +363,18 @@ function MyContainer(props) {
   return contain
 }
 
-const Home = ({ routeData, setSiteData }) => {
+const Home = ({ longURL, shortURl, setSiteData }) => {
+  console.log("Home -> setSiteData--0", setSiteData)
+  console.log("Home -> shortURl--0", shortURl)
+  console.log("Home -> longURL--0.1", longURL)
   // function Home(props) {
   // setSiteData("s1", "l1")
+  // setError("dddddddddsds")
+  // console.log("-ddddddddddddddddddddd")
   return (
     <>
       <NavigationBar></NavigationBar>
-      <MyContainer setSiteData={setSiteData}></MyContainer>
+      <MyContainer longURL={longURL} shortURl={shortURl} setSiteData={setSiteData}></MyContainer>
       <Footer></Footer>
     </>
   )

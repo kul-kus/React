@@ -1,39 +1,30 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './../js/Home.js';
 import ShortUrl from './../js/ShortUrl.js';
 
 
+// import { Provider } from 'react-redux'
+
 function App() {
-
-
 
    const [longURL, setLURL] = useState(null)
    const [shortURl, setShURL] = useState(null)
-   // [formData["url"], setUrl] = useState("");
-
-   // let siteData = {
-
-   // }
-
 
    const setSiteData = (surl, lurl) => {
-      setLURL(lurl)
       setShURL(surl)
-      console.log("======siteData=====>", longURL, shortURl)
+      setLURL(lurl)
    }
 
-   // useEffect(() => {
-   // }, [longURL, shortURl])
    return (
       <Router>
          <Switch>
             {/* <Route exact path='/' routeData={"sample test"} component={Home} /> */}
             <Route exact path='/'
                render={() =>
-                  <Home setSiteData={setSiteData} />
+                  <Home longURL={longURL} shortURl={shortURl} setSiteData={setSiteData} />
                }
             />
             <Route exact path='/shorturl'

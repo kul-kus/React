@@ -57,11 +57,12 @@ function InputPanel(props) {
 
     let home = (props.type && props.type === "home") ? true : false
 
+    // console.log("InputPanel -> props.longurl", props.longurl)
     return (
         <div className="inputdiv" >
             {props.heading && <Heading type={props.type} heading={props.heading}></Heading>}
             {(props.form)
-                ? (< props.form setSiteData={props.setSiteData}></props.form>)
+                ? (< props.form longURL={props.longURL} shortURl={props.shortURl} setSiteData={props.setSiteData}></props.form>)
                 : <TextBox
                     value={props.shrtURL}
                     type={props.type}
@@ -190,6 +191,10 @@ function TextBox(props) {
         </>
     )
 }
+
+// const onFormSubmit = (e => {
+//     console.log("dddddddddddddddddddddddddddddddddddddddddddddddddd")
+// })
 function ConvertStringtoHtml(con) {
     return (
         <span dangerouslySetInnerHTML={{ __html: con }}>
