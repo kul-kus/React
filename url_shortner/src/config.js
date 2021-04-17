@@ -1,12 +1,16 @@
 
 
+//moodb cred//
+//Email-- riderkuldeep@gmail.com/Qwerty@123 
+//Email-- kulk@softwareag.com/Qwerty@123 
+
 module.exports = {
     "websiteUrl": "www.google.com",
-    "baseUrl": "https://3c7b8daa2c00.ngrok.io",
+    "baseUrl": "http://7d9361e22099.ngrok.io",
 
     "api": {
         // "baseUrl": "https://www.esyurl.com/",
-        "baseShortUrl": "https://3c7b8daa2c00.ngrok.io",
+        "baseShortUrl": "http://7d9361e22099.ngrok.io",
         // "baseUrl": "http://localhost:8080",
         "defaultExpiryDay": 1
 

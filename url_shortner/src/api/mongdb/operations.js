@@ -37,6 +37,7 @@ module.exports = {
     },
     getDocument: function (filterQuery = {}, db, client, getAll = false) {
         filterQuery = comm.createQuery(filterQuery)
+        console.log("filterQuery===>", filterQuery)
         var sortingMethod = { createdDate: -1 }
         // if (!getAll) {
         //     filterQuery["isDeleted"] = "false"
@@ -64,6 +65,8 @@ module.exports = {
         })
     },
     updateDocument: function (filterQuery, updateObj, db, client) {
+        console.log("filterQuery-->Update", filterQuery)
+        console.log("updateObj", updateObj)
         return new Promise(async (res, rej) => {
             try {
                 const collection = db.collection(usercollection);
@@ -75,7 +78,7 @@ module.exports = {
                         }
                         assert.equal(err, null);
                         assert.equal(1, result.result.n);
-                        return res(result)
+                        return res(result.result)
                     } catch (error) {
                         return rej("Unable to Update the Document. Please check you Id")
                     }

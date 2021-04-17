@@ -17,7 +17,10 @@ module.exports = {
     //----------------cache controllers----------------
 
     getCache: function () {
+
         return async function (req, res, next) {
+            console.log("------------customEnding route--get--------------", req.params)
+            console.log("getCache------------>", req.params)
             let record
             if (t(req, "params.esyID").isDefined) {
                 record = await getCache(t(req, "params.esyID").safeObject)
@@ -57,6 +60,7 @@ module.exports = {
                 let data
                 if (req["params"]["shortUrlData"]) {
                     data = req["params"]["shortUrlData"]
+                    console.log("data======cache=========>", JSON.stringify(data[0]))
                     // siteRedirectUrl = data[0]["url"]["longUrl"]
                     // resp.writeHead(301,
                     //     { Location: siteRedirectUrl }
@@ -76,23 +80,18 @@ module.exports = {
                     updatedData = data
                 }
 
-
-                // await setCache(req["params"]["customEnding"], data)
-                // if (!req["params"]["shortUrlData"]) {
-                resp.writeHead(301,
-                    { Location: siteRedirectUrl }
-                );
-                resp.end();
-
-                // }
-
-
                 updatedData["siteVisitedCount"] = ++updatedData["siteVisitedCount"]
+                updatedData["modifiedDate"] = req.headers.createdDate
                 await setCache(updatedData["url"]["customEnding"], [updatedData])
                 await setCache(updatedData["uid"], [updatedData])
                 console.log("updatedData", updatedData)
                 let updatedDataResult = await mongo.updateDocument({ "uid": updatedData["uid"] }, updatedData, db, client)
+                console.log("updatedDataResult-result---->", updatedDataResult)
 
+                resp.writeHead(301,
+                    { Location: siteRedirectUrl }
+                );
+                resp.end();
             } catch (error) {
                 console.log("error", error)
                 return sendResp(resp, 500, {
@@ -237,6 +236,7 @@ module.exports = {
                     "error": "Please provide valid body to update."
                 })
             }
+            req["body"]["modifiedDate"] = req.headers.createdDate
             try {
                 let updatedData = await mongo.updateDocument({ "uid": req["params"]["esyID"] }, req["body"], db, client)
                 // let record = await mongo.getDocument({ "uid": req["params"]["esyID"] }, db, client, true)
@@ -324,7 +324,7 @@ function vaildationCheck(req, resp, db, client) {
                 let curr = req["body"][i]
 
                 if (!t(curr, "longUrl").isDefined) {
-                    return sendResp(resp, 400, { "error": `unable to find key 'longUrl' in body at index ${i}` })
+                    return sendResp(resp, 400, { "error": `Unable to find key 'longUrl' in body at index ${i}` })
                 } else {
                     if (!comm.validateUrl(curr["longUrl"])) {
                         return sendResp(resp, 400, { "error": `Please provide vaild longUrl at index ${i}` })
@@ -375,7 +375,7 @@ function vaildationCheck(req, resp, db, client) {
 
 }
 function getUid() {
-    let id = Date.now() + comm.getRandomString(2, "numeric")
+    let id = Date.now() + comm.getRandomString(5, "numeric")
     return String(id)
 }
 var self = module.exports

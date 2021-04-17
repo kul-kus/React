@@ -12,11 +12,8 @@ module.exports = function (app, db, client) {
     // console.log("------------------app-----", app.headers)
     app.use(function (req, res, next) {
         req.headers["createdDate"] = new Date(Date.now()).toISOString()
-        // req.mode = 'no-cors'
-        // req.headers["Access-Control-Allow-Origin"] = "*"
-        res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+        res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        // console.log("req.headers---->", req.headers)
         next()
     })
     app.route("/esy")

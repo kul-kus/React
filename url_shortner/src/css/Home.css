@@ -13,13 +13,23 @@
 
 .contnet_a{
   font-weight: 600;
-  color: #0d97f5
+  color: #0d97f5;
+  word-break: break-word;
 }
+
 .contnet_a:hover{
   text-decoration: none;
   color:#067ccc
 }
 
+.contnet_b{
+  font-weight: 600;
+  color: #505050
+}
+.contnet_b:hover{
+  text-decoration: none;
+  color:#067ccc
+}
 
 .form-control:focus {
   color: #495057;
@@ -54,8 +64,8 @@
 .navbar-dark .navbar-brand a:focus,
 .navbar-dark .navbar-brand a,
  .navbar-dark .navbar-brand a:hover {
-  font-size: 36px;
-  /* font-family: serif; */
+  font-size: 55px;
+  font-family: "Days One";
   text-decoration: none;
   color: #00a0db;
 }
@@ -63,9 +73,8 @@
 .navbar-dark .navbar-brand span,
  .navbar-dark .navbar-brand span:hover
 {
-  font-weight: bold;
-  font-size: 45px;
-  font-family: sans-serif;
+  font-size: 60px;
+  font-family: "Days One"
 }
 footer {
   position: absolute;
