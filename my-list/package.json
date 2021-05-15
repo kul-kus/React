@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.1.1",
-    "mongodb": "^3.1.0-beta4",
-    "mongoose": "^5.7.5",
+    "bootstrap": "^4.6.0",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.9",
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.3.2",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4"
   },
